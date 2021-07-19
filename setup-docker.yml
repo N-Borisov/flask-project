@@ -11,6 +11,7 @@
         - yum-utils
         - git
         - python3-libs
+        - libselinux-python3
       state: latest
   - name:
     shell: yum-config-manager --add-repo  https://download.docker.com/linux/centos/docker-ce.repo
@@ -31,6 +32,6 @@
   - name: firewall
     shell: firewall-cmd --add-port={5000,80,3306,9323,9090,9104}/tcp --permanent && firewall-cmd --reload
   - name: configure Docker metrics for Prometheus
-  - shell: cp daemon.json /etc/docker/
+    shell: cp daemon.json /etc/docker/
   - name: Start Application envronment via docker-compose
     shell: docker-compose up -d

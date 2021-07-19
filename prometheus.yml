@@ -29,8 +29,8 @@ scrape_configs:
     - targets: ['localhost:9090']
   - job_name: 'Docker'
     static_configs:
-    - targets: ['localhost:9323']
+    - targets: ['192.168.1.57:9323']
   - job_name: 'MySql'
     static_configs:
-    - targets: ['localhost:9104']
+    - targets: ['192.168.1.57:9104']
 
