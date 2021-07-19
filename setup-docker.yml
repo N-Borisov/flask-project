@@ -30,5 +30,7 @@
       state: permissive
   - name: firewall
     shell: firewall-cmd --add-port={5000,80,3306,9323,9090,9104}/tcp --permanent && firewall-cmd --reload
+  - name: configure Docker metrics for Prometheus
+  - shell: cp daemon.json /etc/docker/
   - name: Start Application envronment via docker-compose
     shell: docker-compose up -d
