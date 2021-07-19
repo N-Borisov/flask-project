@@ -1,0 +1,34 @@
+- hosts: localhost
+  connection: local
+  become: yes
+  gather_facts: false
+  tasks:
+  - name: install packages
+    yum:
+      name:
+        - wget
+        - curl
+        - yum-utils
+        - git
+        - python3-libs
+      state: latest
+  - name:
+    shell: yum-config-manager --add-repo  https://download.docker.com/linux/centos/docker-ce.repo
+    shell: yum install -y docker-ce docker-ce-cli containerd.io
+  - name: Install docker-compose
+    shell: curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    shell: chmod +x /usr/local/bin/docker-compose
+    shell: ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+  - name: Start and Enable Docker Daemon
+    service:
+      name: docker
+      state: started
+      enabled: true
+  - name: disable selinx
+    ansible.posix.selinux:
+      policy: targeted
+      state: permissive
+  - name: firewall
+    shell: firewall-cmd --add-port={5000,80,3306,9323,9090,9104}/tcp --permanent && firewall-cmd --reload
+  - name: Start Application envronment via docker-compose
+    shell: docker-compose up -d
