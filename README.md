@@ -6,4 +6,4 @@ Use git clone
 
 and start set-environment.sh, which will do the whole work for you.
 
-Once it is finished, validate the application through your browser with http://<your-ip>  and Prometheus http:// <your-ip>:9090/targets or FQDN.
+Once it is finished, validate the application through your browser with http://your-ip  and Prometheus http://your-ip:9090/targets or FQDN.
