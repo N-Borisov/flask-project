@@ -2,7 +2,7 @@
 
 The purpose of this project is to demonstrate automated deployment for a basic application environment consisting of the Python Flask web framework with a MySQL backend and Nginx for a load balancer. The automated setup also includes Prometheus monitoring.
 
-Use git clone >
+Use git clone 
 
 and start set-environment.sh, which will do the whole work for you.
 
