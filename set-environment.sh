@@ -5,6 +5,7 @@ ips=`ip route get 8.8.8.8 | sed -n '/src/{s/.*src *\([^ ]*\).*/\1/p;q}'` && expo
 
 # install ansible
 yum install -y python3 python3-pip && \
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3 get-pip.py
 pip3 install cryptography && \
 pip3 install ansible
 

@@ -14,12 +14,9 @@
         - libselinux-python3
       state: latest
   - name:
-    shell: yum-config-manager --add-repo  https://download.docker.com/linux/centos/docker-ce.repo
-    shell: yum install -y docker-ce docker-ce-cli containerd.io
+    shell: yum-config-manager --add-repo  https://download.docker.com/linux/centos/docker-ce.repo && yum install -y docker-ce docker-ce-cli containerd.io
   - name: Install docker-compose
-    shell: curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-    shell: chmod +x /usr/local/bin/docker-compose
-    shell: ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+    shell: curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose && ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
   - name: Start and Enable Docker Daemon
     service:
       name: docker
